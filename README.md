@@ -25,6 +25,11 @@ App not contains:
 3. Start app: execute  **gradlew bootRun**.  
 4. Enjoy app :)
 
+#Docker way
+1. Get from git: **git clone https://github.com/mailgva/numbersv2**
+2. cd numbersv2
+3. run **docker-compose up --build**
+
 # Available URLs:
 1. **/api/v1/fact/{number}** - to get number fact 
 2. **/api/v1/fact/{number}/{type}** - to get number fact by type ("trivia", "math", "date", "year")
@@ -36,7 +41,12 @@ App not contains:
 
 # Example:
 1. curl http://localhost:8080/numbers/api/v1/fact/11 -H "Accept: application/json"
+	* result:{"fact":"11 is the number of incarnations of The Doctor in BBC sci-fi series Doctor Who."}
 2. curl http://localhost:8080/numbers/api/v1/fact/1970/year -H "Accept: application/json"
+	* result:{"fact":"1970 is the year that U.S. President Richard Nixon signs into law the Occupational Safety and Health Act on December 29th."}
 3. curl http://localhost:8080/numbers/api/v1/mostpopular/ -H "Accept: application/json"
+	* result:{"mostpopular":{"1":2,"2":1,"1970":1,"5":2,"7":1,"9":2,"11":1}}
 4. curl http://localhost:8080/numbers/api/v1/avglatency/ -H "Accept: application/json"
+	* result:{"avglatency":"147.4666666666666667"}
 5. curl http://localhost:8080/numbers/api/v1/successrate/ -H "Accept: application/json"
+	* result:{"successrate":"100.0000000000000000"}

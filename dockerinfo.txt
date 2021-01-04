@@ -1,0 +1,5 @@
+gradle clean build
+sudo docker build -t numbers:1.0 .
+sudo docker image tag numbers:1.0 mailgva/numbers:1.0
+sudo docker image push mailgva/numbers:1.0
+docker-compose up --build

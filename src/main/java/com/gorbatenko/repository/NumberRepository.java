@@ -1,8 +1,6 @@
 package com.gorbatenko.repository;
 
 import com.gorbatenko.model.NumberRequest;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +41,7 @@ public class NumberRepository {
      * @return average value
      */
     public BigDecimal getAvgLatency() {
-        Query query = em.createNativeQuery("select avg(latency) from number_requests where success = true");
+        Query query = em.createNativeQuery("select avg(latency) from number_requests where success = 1");
         return (BigDecimal) query.getSingleResult();
     }
 
@@ -62,23 +60,20 @@ public class NumberRepository {
      * @return Map<Number, Count of requests>
      */
     public Map<Integer, BigInteger> getMostPopular() {
-        @Data
-        @AllArgsConstructor
-        class GroupData {
-            Integer number;
-            BigInteger count;
-        }
-
         Query query = em.createNativeQuery(
                 "select number, count(*) cnt " +
                          "from number_requests " +
-                         "group by number order by cnt desc limit 10", GroupData.class);
+                         "group by number order by cnt desc limit 10");
 
         Map<Integer, BigInteger> result = new HashMap<>();
 
-        List<GroupData> list = query.getResultList();
+        List<Object[]> list = query.getResultList();
 
-        list.forEach(row -> result.put(row.getNumber(), row.getCount()));
+        list.stream().forEach(
+                (record) -> {
+                    Integer number = (Integer) record[0];
+                    BigInteger count = (BigInteger) record[1];
+                    result.put(number, count);});
 
         return result;
     }

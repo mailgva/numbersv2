@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=numbers
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+  app:
+    image: mailgva/numbers
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
