@@ -15,7 +15,6 @@ Technologies:
 
 App not contains:
 - tests
-- docker image
 
 # Tutorial
 1. Get from git: **git clone https://github.com/mailgva/numbersv2**
@@ -25,7 +24,7 @@ App not contains:
 3. Start app: execute  **gradlew bootRun**.  
 4. Enjoy app :)
 
-#Docker way
+# Docker way
 1. Get from git: **git clone https://github.com/mailgva/numbersv2**
 2. cd numbersv2
 3. run **docker-compose up --build**
