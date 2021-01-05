@@ -49,3 +49,6 @@ App not contains:
 	* result:{"avglatency":"147.4666666666666667"}
 5. curl http://localhost:8080/numbers/api/v1/successrate/ -H "Accept: application/json"
 	* result:{"successrate":"100.0000000000000000"}
+
+# Additional info (swagger): 
+**http://localhost:8080/numbers/swagger-ui/** section number-controller
