@@ -42,7 +42,8 @@ public class NumberRepository {
      */
     public BigDecimal getAvgLatency() {
         Query query = em.createNativeQuery("select avg(latency) from number_requests where success = 1");
-        return (BigDecimal) query.getSingleResult();
+        BigDecimal result = (BigDecimal) query.getSingleResult();
+        return  (result == null ? BigDecimal.valueOf(0) : result);
     }
 
     /**

@@ -12,7 +12,8 @@ import javax.persistence.*;
  * @version 1.0
  */
 
-@Entity(name="number_requests")
+@Entity
+@Table(name="number_requests")
 @Data
 @NoArgsConstructor
 public class NumberRequest {

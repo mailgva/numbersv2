@@ -13,8 +13,7 @@ Technologies:
 - Spring boot 2.4.1
 - PostgreSQL 42.2.18
 
-App not contains:
-- tests
+# App contains tests for all REST endpoints.
 
 # Tutorial
 1. Get from git: **git clone https://github.com/mailgva/numbersv2**
